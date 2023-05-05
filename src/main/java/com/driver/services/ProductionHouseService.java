@@ -26,15 +26,6 @@ public class ProductionHouseService {
        List<WebSeries> webSeriesList =  new ArrayList<>();
        productionHouse.setWebSeriesList(webSeriesList);
 
-
-//        double sum = 0;
-//        for(WebSeries webseries: webSeriesList){
-//            double rating = webseries.getRating();
-//             sum += rating;
-//        }
-//          double average = sum / webSeriesList.size();
-//        return (int) average;
-
         return productionHouseRepository.save(productionHouse).getId();
 
     }

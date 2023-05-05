@@ -43,7 +43,8 @@ public class SubscriptionService {
             amountPaid = 1000 + (350 * subscription.getNoOfScreensSubscribed());
         }
         subscription.setTotalAmountPaid(amountPaid);
-        subscriptionRepository.save(subscription);
+       // subscriptionRepository.save(subscription);
+        userRepository.save(user);
 
         return amountPaid;
     }
