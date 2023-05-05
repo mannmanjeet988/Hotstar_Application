@@ -37,8 +37,7 @@ public class SubscriptionService {
         Integer amountPaid = 0;
         if((subscription.getSubscriptionType().toString()).equals(SubscriptionType.BASIC.toString())){
             amountPaid = 500 + (200 * subscription.getNoOfScreensSubscribed());
-        } else if ((subscription.getSubscriptionType().toString()).equals(SubscriptionType.PRO.toString()))
-        {
+        } else if ((subscription.getSubscriptionType().toString()).equals(SubscriptionType.PRO.toString())) {
             amountPaid = 800 + (250 * subscription.getNoOfScreensSubscribed());
         } else {
             amountPaid = 1000 + (350 * subscription.getNoOfScreensSubscribed());
@@ -56,16 +55,16 @@ public class SubscriptionService {
         //update the subscription in the repository
         User user = userRepository.findById(userId).get();
         Subscription subscription = user.getSubscription();
-        Integer extraAmount= 0;
-        if(user.getSubscription().getSubscriptionType().equals(SubscriptionType.ELITE)){
+        int extraAmount= 0;
+        if(user.getSubscription().getSubscriptionType().toString().equals(SubscriptionType.ELITE.toString())){
             throw new Exception("Already the best Subscription");
         }
-        if(user.getSubscription().getSubscriptionType().equals(SubscriptionType.BASIC)){
+        if(user.getSubscription().getSubscriptionType().toString().equals(SubscriptionType.BASIC.toString())){
             subscription.setSubscriptionType(SubscriptionType.PRO);
             extraAmount= 300 + (50 * subscription.getNoOfScreensSubscribed());
             subscriptionRepository.save(subscription);
         }
-        else if(user.getSubscription().equals(SubscriptionType.PRO)){
+        else if(user.getSubscription().getSubscriptionType().toString().equals(SubscriptionType.PRO.toString())){
             subscription.setSubscriptionType(SubscriptionType.ELITE);
             extraAmount= 200 + (100 * subscription.getNoOfScreensSubscribed());
             subscriptionRepository.save(subscription);

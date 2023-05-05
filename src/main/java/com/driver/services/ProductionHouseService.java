@@ -8,6 +8,7 @@ import com.driver.repository.ProductionHouseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -21,10 +22,9 @@ public class ProductionHouseService {
         ProductionHouse productionHouse = new ProductionHouse();
         productionHouse.setName(productionHouseEntryDto.getName());
         productionHouse.setRatings(0);
-        productionHouseRepository.save(productionHouse);
 
-//       List<WebSeries> webSeriesList =  productionHouse.getWebSeriesList();
-//       productionHouse.setWebSeriesList(webSeriesList);
+       List<WebSeries> webSeriesList =  new ArrayList<>();
+       productionHouse.setWebSeriesList(webSeriesList);
 
 
 //        double sum = 0;
@@ -34,7 +34,9 @@ public class ProductionHouseService {
 //        }
 //          double average = sum / webSeriesList.size();
 //        return (int) average;
-       return  null;
+
+        return productionHouseRepository.save(productionHouse).getId();
+
     }
 
 
