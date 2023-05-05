@@ -79,28 +79,27 @@ public class SubscriptionService {
 
         //We need to find out total Revenue of hotstar : from all the subscriptions combined
         //Hint is to use findAll function from the SubscriptionDb
-//        List<User> userList = userRepository.findAll();
-//       // List<Subscription> subscriptionList = subs
-//        Integer revenue = 0;
-//           for(User user : userList){
-//               Subscription subscription = user.getSubscription();
-//               if(user.getSubscription().equals(SubscriptionType.BASIC)){
-//                   revenue += 500 + (200 * subscription.getNoOfScreensSubscribed());
-//               } else if (user.getSubscription().equals(SubscriptionType.PRO)){
-//                   revenue += 800 + (250 * subscription.getNoOfScreensSubscribed());
-//               } else {
-//                   revenue += 1000 + (350 * subscription.getNoOfScreensSubscribed());
-//               }
-//           }
-//           return revenue;
+        List<User> userList = userRepository.findAll();
+        Integer revenue = 0;
+           for(User user : userList){
+               Subscription subscription = user.getSubscription();
+               if(user.getSubscription().getSubscriptionType().equals(SubscriptionType.BASIC)){
+                   revenue += 500 + (200 * subscription.getNoOfScreensSubscribed());
+               } else if (user.getSubscription().getSubscriptionType().equals(SubscriptionType.PRO)){
+                   revenue += 800 + (250 * subscription.getNoOfScreensSubscribed());
+               } else if(user.getSubscription().getSubscriptionType().equals(SubscriptionType.ELITE)){
+                   revenue += 1000 + (350 * subscription.getNoOfScreensSubscribed());
+               }
+           }
+          return revenue;
 
-        List<Subscription> subscriptionList = subscriptionRepository.findAll();
-       Integer revenue = 0;
-       for(int i =0; i< subscriptionList.size();i++)
-       {
-           revenue +=subscriptionList.get(i).getTotalAmountPaid();
-       }
-        return revenue;
+//        List<Subscription> subscriptionList = subscriptionRepository.findAll();
+//       Integer revenue = 0;
+//       for(int i =0; i< subscriptionList.size();i++)
+//       {
+//           revenue +=subscriptionList.get(i).getTotalAmountPaid();
+//       }
+  //      return revenue;
     }
 
 }
