@@ -20,11 +20,13 @@ public class ProductionHouseService {
 
         ProductionHouse productionHouse = new ProductionHouse();
         productionHouse.setName(productionHouseEntryDto.getName());
-
-       List<WebSeries> webSeriesList =  productionHouse.getWebSeriesList();
-       productionHouse.setWebSeriesList(webSeriesList);
-
+        productionHouse.setRatings(0);
         productionHouseRepository.save(productionHouse);
+
+//       List<WebSeries> webSeriesList =  productionHouse.getWebSeriesList();
+//       productionHouse.setWebSeriesList(webSeriesList);
+
+
 //        double sum = 0;
 //        for(WebSeries webseries: webSeriesList){
 //            double rating = webseries.getRating();
@@ -32,8 +34,7 @@ public class ProductionHouseService {
 //        }
 //          double average = sum / webSeriesList.size();
 //        return (int) average;
-        return 0;
-       // return  null;
+       return  null;
     }
 
 
